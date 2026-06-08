@@ -105,7 +105,7 @@ int sum(vector<int>& arr)
 int main()
 {
 
-    vector<int> arr = {3,1,2,4};
+    vector<int> arr = {1,2,3};
 
     cout<<sum(arr);
 
