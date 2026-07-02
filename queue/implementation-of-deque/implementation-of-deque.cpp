@@ -147,6 +147,6 @@ int main()
 
     dq1.deleteFromRear();
 
-    dq1.insertAtRear(6);
+    dq1.insertAtRear(6); 
 
 }
