@@ -130,6 +130,123 @@ class List
                 cout<<temp->data<<"->";
                 temp = temp->next;
             }
+            cout<<endl;
+        }
+
+        void insertLL(int value, int pos)
+        {
+            Node* temp = head;
+
+            if(pos<0)
+            {
+                cout<<"Position shouldn't be negative";
+            }
+
+            if(pos==0)
+            {
+                push_front(value);
+                return;
+            }
+
+            Node* newNode = new Node(value);
+
+            for(int i=0; i<pos-1; i++)
+            {
+                temp = temp->next;
+            }
+
+            newNode->next = temp->next;
+            temp->next = newNode;
+
+        }
+
+        void reverse()
+        {
+            Node* curr = head;
+            Node* prev = NULL;
+            Node* next;
+
+            while(curr!=NULL)
+            {
+                next = curr->next;
+                curr->next = prev;
+                prev = curr;
+                curr = next;
+            }
+
+            head = prev;
+        }
+
+        void middleOfLL()
+        {
+            Node* slow = head;
+            Node* fast = head;
+
+            while(fast!=NULL && fast->next!=NULL)
+            {
+                slow = slow->next;
+                fast = fast->next->next;
+            }
+
+
+            cout<<slow->data<<endl;
+        }
+
+        bool detectCycle()
+        {
+            Node* slow = head;
+            Node* fast = head;
+
+            while(fast!=NULL && fast->next!=NULL)
+            {
+                slow = slow->next;
+                fast = fast->next->next;
+
+                if(slow==fast)
+                {
+                    return true;
+                }
+
+            }
+            return false;
+        }
+
+        void cycleStart()
+        {
+            Node* slow = head;
+            Node* fast = head;
+            int x = 0;
+
+            while(fast->next!=NULL && fast->next->next!=NULL)
+            {
+                slow = slow->next;
+                fast = fast->next->next;
+
+                if(slow==fast)
+                {
+                    x = 1;
+                    break;
+                }
+                
+
+            }
+
+            if(x==0)
+            {
+                cout<<"No cycle detected";
+                return;
+            }
+
+            slow = head;
+
+            while(slow!=fast)
+            {
+                slow = slow->next;
+                fast = fast->next;
+            }
+
+            cout<<"Starting Node is: "<<slow->data<<endl;
+
         }
 
 
@@ -145,12 +262,18 @@ int main()
     l1.push_front(30);
     l1.push_front(40);
     l1.push_front(50);
-    l1.push_back(100);
-    l1.pop_front();
-    l1.pop_back();
+    l1.insertLL(100, 1);
+    l1.insertLL(200, 4);
 
     l1.printLL();
 
+    l1.middleOfLL();
+
+    l1.tail->next = l1.head->next->next;
+
+    cout<<l1.detectCycle()<<endl;
+
+    l1.cycleStart();
 
 
 
