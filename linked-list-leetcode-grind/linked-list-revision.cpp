@@ -29,6 +29,8 @@ class List
             head = tail = NULL;
         }
 
+        // Inserting element in Linked List from the front
+
         void push_front(int val)
         {
 
