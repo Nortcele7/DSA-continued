@@ -49,6 +49,8 @@ class List
 
         }
 
+        // Inserting element in Linked List from the rear end
+
         void push_back(int val)
         {
 
