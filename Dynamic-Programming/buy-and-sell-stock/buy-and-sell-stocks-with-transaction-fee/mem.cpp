@@ -2,6 +2,7 @@
 #include<vector>
 using namespace std;
 
+// Updated
 int f(int index, int buy, vector<int>& prices, int fee, vector<vector<int>>& dp)
 {
     int n = prices.size();
@@ -36,5 +37,7 @@ int main()
 
     vector<vector<int>>dp(n, vector<int>(2, -1));
 
+    cout<"This is the memoized solution";
     cout<<f(0, 1, prices, fee, dp);
+
 }
